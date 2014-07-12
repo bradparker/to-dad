@@ -1,0 +1,107 @@
+<html>
+  <head>
+    <title>To Dad</title>
+    <link href="http://alexgorbatchev.com/pub/sh/current/styles/shThemeEmacs.css" rel="stylesheet" type="text/css" />
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js" type="text/javascript"></script>
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shAutoloader.js" type="text/javascript"></script>
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPerl.js" type="text/javascript"></script>
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js" type="text/javascript"></script>
+  </head>
+
+  <style>
+    body {
+      font-family: "Source Sans", "Helvetica", sans-serif;
+      height: 100%;
+      position: relative;
+      margin: 0;
+    }
+    body > article {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .syntaxhighlighter, code, pre {
+      font-family: "Source Code Pro", mono-space;
+    }
+
+    .syntaxhighlighter .toolbar { display: none; }
+    .syntaxhighlighter .gutter .line { padding: 0 0.5em; }
+    .syntaxhighlighter .code { padding: 0 0.5em; }
+    .syntaxhighlighter { padding: 1em; }
+
+    article,
+    .syntaxhighlighter,
+    .syntaxhighlighter .line,
+    .syntaxhighlighter .line.alt2,
+    .syntaxhighlighter .line.alt1 { background-color: rgb(35,35,35) !important; }
+
+    .output-code {
+      color: whitesmoke;
+      padding: 1em;
+      margin: 0;
+    }
+
+    img.full-width { width: 100%; }
+
+    .green {
+      color: rgb(158,189,101);
+    }
+
+    .yellow {
+      color: rgb(253,164,40);
+    }
+
+    .red {
+      color: rgb(202,119,59);
+    }
+
+    .blue {
+      color: rgb(135,182,227);
+    }
+  </style>
+  <body>
+    <article id="code-in">
+      <pre id="perly">
+# to_dad.pl
+
+use Term::ANSIColor;
+
+my @words = (
+  "\N{U+0068}\N{U+0061}\N{U+0070}\N{U+0070}\N{U+0079}",
+  "\N{U+0062}\N{U+0069}\N{U+0072}\N{U+0074}\N{U+0068}\N{U+0064}\N{U+0061}\N{U+0079}",
+  "\N{U+0064}\N{U+0061}\N{U+0064}",
+  "\N{U+0079}\N{U+006F}\N{U+0075}",
+  "\N{U+0072}\N{U+006F}\N{U+0063}\N{U+006B}"
+);
+
+my @colors  = ('red', 'green', 'yellow');
+
+foreach (@words) {
+  print color(@colors[int(rand(scalar @colors))]), $_ . " ";
+}
+
+print "\n";
+      </pre>
+    </article>
+
+    <article id="code-out">
+      <pre class="output-code">
+<span>~%</span> perl to_dad.pl
+<span class="green">happy</span> <span class="yellow">birthday</span> <span class="green">dad</span> <span class="red">you</span> <span class="blue">rock</span>
+<span>~%</span>
+      </pre>
+    </article>
+
+    <article>
+      <img class="full-width" src="voucher.jpg" />
+    </article>
+
+    <script type="text/javascript">
+      var code = document.getElementById('perly').innerHTML;
+      var brush = new SyntaxHighlighter.brushes.Perl();
+      brush.init({ toolbar: false });
+      var html = brush.getHtml(code);
+      document.getElementById('code-in').innerHTML = html;
+    </script>
+  </body>
+</html>
